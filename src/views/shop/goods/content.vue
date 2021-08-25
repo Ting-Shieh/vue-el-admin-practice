@@ -9,8 +9,10 @@
       </button>
     </router-link>
     <div class="">
-      <!-- tinymce editor -->
-      <tiny-mce v-model="contnet"></tiny-mce>
+      <!-- web 版 -->
+      <!-- <tiny-mce v-model="contnet"></tiny-mce> -->
+      <!-- 富文本编辑器 -->
+			<tiny-mce ref="editor" v-model="content" @onClick="onClick" toolbar="undo redo |  formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists table | removeformat | imageUpload"/>
     </div>
     <div class="">
       <el-button
@@ -43,6 +45,12 @@ export default {
 
   watch: {},
   methods: {
+    // 滑鼠單擊的事件
+			onClick (e, editor) {
+				console.log('Element clicked')
+				console.log(e)
+				console.log(editor)
+			},
     //選擇圖片
     chooseImage(index) {
       const MAX = 9
